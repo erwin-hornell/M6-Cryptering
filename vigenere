@@ -1,0 +1,23 @@
+def ascii(l: list) -> list:
+    asciiList = []
+    for char in l:
+        asciiList.append(ord(char))
+    return asciiList
+
+def asciiSum(l1: list, l2: list) -> list:
+    sumAscii = []
+    for n in range(len(l1)):
+        l2Value = int(l2[n]) # om n utanför l2 längd börja om o algo
+        ascii = int(l1[n]) % 255
+        sumAscii.append(ascii)
+    return sumAscii
+
+def vigenere(text: str, key: str) -> str : #Input: text, key | return: text encrypted by key
+    textAscii = ascii(list(text))
+    keyAscii = ascii(list(key))
+    sumAscii = asciiSum(textAscii, keyAscii)
+    return sumAscii
+
+print(ascii("abc"))
+print(ascii("123"))
+print(vigenere("abc", "123"))
