@@ -1,10 +1,10 @@
-def charToAscii(l: list[str]) -> list[int]:
+def charToAscii(l: list[str]) -> list[int]: # converts chars to ascii value
     asciiList = []
     for char in l:
         asciiList.append(ord(char))
     return asciiList
 
-def asciiToChar(l: list[int]) -> list[str]:
+def asciiToChar(l: list[int]) -> list[str]: # converts ascii value to chars
     charList = []
     for char in l:
         charList.append(chr(char))
@@ -13,11 +13,11 @@ def asciiToChar(l: list[int]) -> list[str]:
 def asciiSum(l1: list[int], l2: list[int]) -> list[int]:
     sumAscii = [] # declare empty list sumAscii
     for n in range(len(l1)): # repeat until entire text L1 has been encrypted by key L2
-        i = n % len(l2)
+        i = n % len(l2) # password "repeats" if shorter than text
         n1 = int(l1[n])
         n2 = int(l2[i])
-        ascii = ((n1 + n2) % 256) # for each position, sum integers n1 and (n2 mod len L1). then mod 256 (char limit)
-        sumAscii.append(ascii) # add summed n to list sumAscii
+        ascii = ((n1 + n2) % 256)
+        sumAscii.append(ascii) # add summed integer to list sumAscii
     return sumAscii
 
 
@@ -52,5 +52,3 @@ print()
 
 failDecrypt = vigenereDecrypt(textEncrypted, "test1234")
 print(failDecrypt)
-
-# koden är ful men det funkar
