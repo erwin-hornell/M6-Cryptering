@@ -1,0 +1,25 @@
+Projektet redovisas torsdag den 30 oktober enligt schemat i Timeline. Varje redovisningstid är 45 minuter under vilka tre projektpar ska presentera och diskutera sina projekt.
+
+Formella krav för presentationen:
+
+    Alla projektmedlemmar måste delta i presentationen
+    Presentationen ska innehålla
+        Introduktion till projektet
+        Demonstration (dvs kör programmet på delad skärm)
+        Intressanta detaljer i lösningen, t ex hur ni delat upp problemet
+        Intressanta problem ni stött på
+        Kort redogörelse för hur ni arbetat och delat upp arbetet
+        Reflektion kring era individuella lärandemål
+
+Vid varje presentation opponerar ett annat par enligt algoritmen:
+
+Om presentationsordningen är P1, P2, P3 opponerar
+
+            P3 på P1s presentation
+            P1 på P2s presentation
+            P2 på P3s presentation 
+
+Opponenterna ansvarar för att
+
+    presentation och diskussion inte överskrider 15 minuter (cirka 10 minuter presentation + 5 minuter diskussion)
+    ställa frågor, i synnerhet om något missats under presentationen, men även om annat ni tycker är intressant eller vill veta mer om
