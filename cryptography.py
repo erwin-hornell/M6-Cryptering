@@ -1,25 +1,29 @@
 import os
 import hashlib
 
-def generate_key(password: str, salt: bytes, iterations: int = 100_000, length: int = 32) -> str:
-    key_bytes = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, iterations, dklen=length)
-    return key_bytes.hex()
+def generate_key(password: str, salt: bytes, iterations: int = 100_000, length: int = 32) -> bytes:
+    return hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, iterations, dklen=length)
+    
 
-def cycled_key(s:str, key:str) -> str:
-    #Returns a key the same length as the string s
-    return key*(len(s)//len(key)) + key[0:len(s)%len(key)]
 
-def xor_encrypt(s: str, key: str) -> bytes:
-    return "".join(chr(ord(c)^ord(key[i % len(key)])) for i, c in enumerate(s)).encode("utf-8")
 
-def xor_decrypt(s: bytes, key: str) -> str:
-    return "".join(chr(ord(c)^ord(key[i % len(key)])) for i, c in enumerate(s.decode("utf-8")))
+def xor_encrypt(data: str, key: bytes) -> bytes:
+    return bytes([b ^ key[i % len(key)] for i, b in enumerate(data.encode("utf-8"))])
 
-def vigenère_encrypt(s: str, key: str) -> str:
-    pass
+def xor_decrypt(data: bytes, key: bytes) -> str:
+    return bytes([b ^ key[i % len(key)] for i, b in enumerate(data)]).decode("utf-8")
 
-def vigenère_decrypt(s: str, key: str) -> str:
-    pass
+def vigenère_encrypt(s: str, key: bytes) -> str:
+    return f"vigenère_encrypt: {s}"
+
+def vigenère_decrypt(s: str, key: bytes) -> str:
+    return s.replace("vigenère_encrypt: ", "")
+
+def encrypt_text(s: str, key: bytes) -> bytes:
+    return xor_encrypt(vigenère_encrypt(s, key), key)
+
+def decrypt_text(s: bytes, key: bytes) -> str:
+    return vigenère_decrypt(xor_decrypt(s, key), key)
 
 if __name__ == "__main__":
     salt = os.urandom(8)
@@ -27,7 +31,7 @@ if __name__ == "__main__":
     print(salt, key)
     s = "short text"
     print(s)
-    s = xor_encrypt(s, key)
+    s = encrypt_text(s, key)
     print(s)
-    s = xor_decrypt(s, key)
+    s = decrypt_text(s, key)
     print(s)
