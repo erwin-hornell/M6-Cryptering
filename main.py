@@ -4,7 +4,7 @@ import os
 import hashlib
 from PySide6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QLabel,
-    QPushButton, QFileDialog, QLineEdit, QMessageBox, QTextEdit, QGridLayout
+    QPushButton, QFileDialog, QLineEdit, QTextEdit
 )
 from PySide6.QtCore import Qt
 
@@ -77,7 +77,7 @@ class EncryptorApp(QWidget):
                 self.file_path_display.append(f"Encrypted successfuly:\n{file}\n -> {out_path}\n\n")
 
         except Exception as e:
-            self.update_status(f"Encryption failed: {e}")
+            self.update_status(f"Encryption failed: {e.with_traceback()}")
             
 
     def decrypt_file(self):
@@ -98,7 +98,7 @@ class EncryptorApp(QWidget):
                 self.file_path_display.append(f"Decrypted successfuly:\n{file}\n-> {out_path}\n\n")
 
         except Exception as e:
-            self.update_status(f"Decryption failed: {e}")
+            self.update_status(f"Decryption failed: {e.with_traceback()}")
 
     
 
