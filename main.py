@@ -65,6 +65,10 @@ class EncryptorApp(QWidget):
         try:
             self.file_path_display.setText("")
             for file in self.selected_files:
+                print(file)
+                if file.split(".")[-1] != "txt":
+                    self.file_path_display.append(f"{file} file type not supported for encryption\n\n")
+                    continue
                 with open(file, "r", encoding="utf-8") as f:
                     plaintext = f.read()
                 salt = os.urandom(8)
