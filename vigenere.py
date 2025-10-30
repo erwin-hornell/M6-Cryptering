@@ -40,15 +40,16 @@ def vigenereDecrypt(text: str, key: str) -> str : #Input: text, key | return: te
     
 
 # test of functions vigenereEncrypt and vigenereDecrypt
-message = "Hemlig mening hemlig mening hemlig mening hemlig mening."
-password = "jfiod5u4tJAOSPvn59"
-textEncrypted = vigenereEncrypt(message, password)
-print(textEncrypted)
-print()
+if __name__ == "__main__":
+    message = "Hemlig mening hemlig mening hemlig mening hemlig mening."
+    password = "jfiod5u4tJAOSPvn59"
+    textEncrypted = vigenereEncrypt(message, password)
+    print(textEncrypted)
+    print()
 
-textDecrypted = vigenereDecrypt(textEncrypted, password)
-print(textDecrypted)
-print()
+    textDecrypted = vigenereDecrypt(textEncrypted, password)
+    print(textDecrypted)
+    print()
 
-failDecrypt = vigenereDecrypt(textEncrypted, "test1234")
-print(failDecrypt)
+    failDecrypt = vigenereDecrypt(textEncrypted, "test1234")
+    print(failDecrypt)
